@@ -1,0 +1,33 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+spring:
+  http:
+    encoding:
+      charset: utf-8
+  datasource:
+    url: jdbc:mysql://localhost:3306/first_generation
+    username: root
+    password: 123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    platform: mysql
+    druid:
+      initialSize: 1
+      minIdle: 3
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 30000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      filters: stat,wall,slf4j
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      #useGlobalDataSourceStat: true
+mybatis:
+  mapper-locations: classpath:mappers/*Mapper.xml
+  type-aliases-package: com.zhaoshy.firstgeneration.entity
